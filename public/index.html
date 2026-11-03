@@ -1,1 +1,47 @@
-
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>NuvemVerse — Jogue junto</title><link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<div id="auth" class="auth-screen">
+  <div class="auth-card">
+    <div class="brand-mark">☁</div><div class="brand">NUVEM<span>VERSE</span></div>
+    <p class="muted">Um universo de jogos, criado para jogar junto.</p>
+    <div class="auth-tabs"><button class="tab active" data-mode="login">Entrar</button><button class="tab" data-mode="register">Criar conta</button></div>
+    <form id="authForm"><label>Nome de jogador</label><input id="username" autocomplete="username" maxlength="16" placeholder="SeuNome" required>
+    <label>Senha</label><input id="password" type="password" autocomplete="current-password" placeholder="Mínimo 6 caracteres" required>
+    <button class="primary full" id="authSubmit">Entrar no universo</button></form><div id="authError" class="error"></div>
+    <small>Projeto independente inspirado em plataformas de jogos sociais.</small>
+  </div>
+</div>
+<div id="app" class="hidden">
+  <aside class="sidebar">
+    <div class="brand sidebrand">☁ NUVEM<span>VERSE</span></div>
+    <button class="nav active" data-page="discover">⌂ <span>Descobrir</span></button>
+    <button class="nav" data-page="games">▣ <span>Jogos</span></button>
+    <button class="nav" data-page="friends">♧ <span>Amigos</span></button>
+    <button class="nav" data-page="avatar">☺ <span>Avatar</span></button>
+    <div class="side-bottom"><div class="mini-avatar" id="miniAvatar">N</div><div><b id="sideName">Jogador</b><small>Minha conta</small></div><button id="logout" title="Sair">↪</button></div>
+  </aside>
+  <main class="main">
+    <header class="topbar"><div class="mobile-brand">☁ NUVEMVERSE</div><div class="online"><i></i> <span id="onlineCount">1</span> online na sala</div><button class="profile-chip" data-goto="avatar"><span id="topAvatar">N</span><b id="topName">Jogador</b></button></header>
+    <section id="page-discover" class="page">
+      <div class="hero"><div><div class="eyebrow">SEU PRÓXIMO MUNDO COMEÇA AQUI</div><h1>Entre. Explore.<br><em>Jogue junto.</em></h1><p>Descubra experiências e encontre seus amigos em mundos feitos de imaginação.</p><button class="primary" data-play="obby">▶ Jogar Obby Clássico</button></div><div class="hero-art"><div class="cloud c1"></div><div class="cloud c2"></div><div class="block-person"><div class="head"></div><div class="body"></div><div class="legs"><i></i><i></i></div></div><div class="island"></div></div></div>
+      <div class="section-head"><div><h2>Experiências em destaque</h2><p>Escolha um mundo e comece a jogar.</p></div><button class="text-btn" data-goto="games">Ver todos →</button></div>
+      <div class="game-grid">
+        <article class="game-card featured" data-play="obby"><div class="game-thumb obby-thumb"><span class="thumb-tag">MULTIPLAYER</span><div class="mini-course"><i></i><i></i><i></i><i></i></div><b>OBBY!</b></div><div class="game-info"><div class="game-icon">🏁</div><div><b>Obby Clássico</b><small>Salte, corra e chegue ao final!</small></div><span class="play-arrow">▶</span></div></article>
+        <article class="game-card" data-play="hangout"><div class="game-thumb hang-thumb"><span>☀</span><b>ILHA SOCIAL</b></div><div class="game-info"><div class="game-icon">🌴</div><div><b>Ilha Social</b><small>Um lugar para encontrar amigos.</small></div><span class="soon">EM BREVE</span></div></article>
+        <article class="game-card" data-play="race"><div class="game-thumb race-thumb"><span>🏎️</span><b>CORRIDA</b></div><div class="game-info"><div class="game-icon">🏎️</div><div><b>Corrida Maluca</b><small>Dispute pistas com a galera.</small></div><span class="soon">EM BREVE</span></div></article>
+      </div>
+    </section>
+    <section id="page-games" class="page hidden"><div class="page-title"><div class="eyebrow">CATÁLOGO</div><h1>Todos os jogos</h1><p>Experiências disponíveis no NuvemVerse.</p></div><div class="game-grid"><article class="game-card" data-play="obby"><div class="game-thumb obby-thumb"><b>OBBY!</b></div><div class="game-info"><div class="game-icon">🏁</div><div><b>Obby Clássico</b><small>Parkour multiplayer</small></div><span class="play-arrow">▶</span></div></article><article class="game-card"><div class="game-thumb hang-thumb">☀</div><div class="game-info"><div class="game-icon">🌴</div><div><b>Ilha Social</b><small>Em desenvolvimento</small></div><span class="soon">EM BREVE</span></div></article></div></section>
+    <section id="page-friends" class="page hidden"><div class="page-title"><div class="eyebrow">SOCIAL</div><h1>Amigos</h1><p>Adicione jogadores e monte sua turma.</p></div><div class="friend-add"><input id="friendName" placeholder="Nome exato do jogador"><button class="primary" id="addFriend">Enviar solicitação</button></div><div id="friendMessage" class="muted"></div><div id="friendList" class="friend-list"></div></section>
+    <section id="page-avatar" class="page hidden"><div class="page-title"><div class="eyebrow">IDENTIDADE</div><h1>Meu avatar</h1><p>Seu personagem no NuvemVerse.</p></div><div class="avatar-panel"><div class="avatar-preview"><div class="avatar-figure"><i></i><b></b><span></span><em></em></div></div><div><h2 id="avatarName">Jogador</h2><p class="muted">Avatar clássico em blocos</p><div class="stat"><span>Conta</span><b>Ativa</b></div><div class="stat"><span>Experiência</span><b>Obby Clássico</b></div></div></div></section>
+    <section id="page-play" class="page hidden play-page"><div class="play-header"><div><button class="text-btn" id="backHome">← Voltar</button><h1>Obby Clássico</h1><small>Chegue ao portal sem cair!</small></div><div class="players-pill">● <span id="playersHere">1</span> jogadores</div></div><div class="game-stage"><canvas id="gameCanvas"></canvas><div class="game-hud"><span>FASE <b id="stageNum">01</b></span><span id="gameStatus">Conectando...</span></div><div class="mobile-controls"><button id="leftBtn">◀</button><button id="jumpBtn">▲</button><button id="rightBtn">▶</button></div></div><div class="game-help">PC: A/D ou ←/→ para andar · Espaço para pular. Celular: use os botões na tela.</div></section>
+    <footer>NUVEMVERSE <span>•</span> Um universo independente de experiências multiplayer.</footer>
+  </main>
+</div>
+<script src="/socket.io/socket.io.js"></script><script src="/app.js"></script>
+</body></html>
